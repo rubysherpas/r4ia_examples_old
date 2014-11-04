@@ -11,5 +11,12 @@ feature 'Creating Projects' do
     click_button 'Create Project'
 
     expect(page).to have_content('Project has been created.')
+
+    project = Project.where(name: "Sublime Text 3").first
+
+    expect(page.current_url).to eql(project_url(project))
+
+    title = "Sublime Text 3 - Projects - Ticketee"
+    expect(page).to have_title(title)
   end
 end
