@@ -39,6 +39,8 @@ GEM
     arel (6.0.0.beta2)
     binding_of_caller (0.7.3.pre1)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.0.1)
+      sass (~> 3.2)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -179,6 +181,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3)
   byebug
   capybara (~> 2.4)
   coffee-rails (~> 4.1.0)
