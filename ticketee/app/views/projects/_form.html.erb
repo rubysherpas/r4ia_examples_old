@@ -11,15 +11,17 @@
      </ul>
    </div>
   <% end %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: 'form-control'%>
+    </div>
+  </div>
 
   <p>
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </p>
 
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
