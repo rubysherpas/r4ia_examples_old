@@ -14,13 +14,15 @@
 </head>
 <body>
 
-<% flash.each do |key, message| %>
-  <div class='flash' id='<%= key %>'>
-  <%= message %>
-  </div>
-<% end %>
+<div class='container'>
+  <% flash.each do |key, message| %>
+    <div class='alert alert-<%= key %>'>
+      <%= message %>
+    </div>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

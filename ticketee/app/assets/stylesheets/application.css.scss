@@ -1,0 +1,11 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  padding: 20px 0px;
+}
+
+.alert-error {
+  @extend .alert-warning;
+}

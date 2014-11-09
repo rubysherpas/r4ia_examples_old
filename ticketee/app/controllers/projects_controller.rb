@@ -15,20 +15,20 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      flash[:notice] = "Project has been created."
+      flash[:success] = "Project has been created."
       redirect_to @project
     else
-      flash[:alert] = "Project has not been created."
+      flash[:error] = "Project has not been created."
       render "new"
     end
   end
 
   def update
     if @project.update(project_params)
-      flash[:notice] = "Project has been updated."
+      flash[:success] = "Project has been updated."
       redirect_to @project
     else
-      flash[:alert] = "Project has not been updated."
+      flash[:error] = "Project has not been updated."
       render "edit"
     end
   end
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
 
-    flash[:notice] = "Project has been destroyed."
+    flash[:success] = "Project has been destroyed."
 
     redirect_to projects_path
   end
@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The project you were looking" +
+    flash[:error] = "The project you were looking" +
                     " for could not be found."
 
     redirect_to projects_path
