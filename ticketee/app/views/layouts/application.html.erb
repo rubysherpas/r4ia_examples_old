@@ -21,6 +21,17 @@
     </div>
   <% end %>
 
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <%= link_to "Ticketee", root_path, class: 'navbar-brand' %>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class='<%= 'active' if current_page?('/') %>'>
+        <%= link_to "Home", root_path %>
+      </li>
+    </ul>
+  </nav>
+
   <%= yield %>
 </div>
 
