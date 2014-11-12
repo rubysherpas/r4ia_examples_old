@@ -26,6 +26,14 @@
         <li class='<%= 'active' if current_page?('/users/sign_up') %>'>
           <%= link_to "Sign up", sign_up_path %>
         </li>
+        <li class='<%= 'active' if current_page?('/users/sign_in') %>'>
+          <%= link_to "Sign in", sign_in_path %>
+        </li>
+      </ul>
+      <ul class="nav navbar-right">
+        <% if signed_in? %>
+          <li>Signed in as <%= current_user.email %></li>
+        <% end %>
       </ul>
     </nav>
 
@@ -35,8 +43,9 @@
       </div>
     <% end %>
 
-
-    <%= yield %>
+    <div class='col-md-12'>
+      <%= yield %>
+    </div>
   </div>
 
 </body>

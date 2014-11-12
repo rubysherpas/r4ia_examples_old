@@ -45,4 +45,18 @@ describe User do
       expect(user.authenticate("hunter1")).to_not be
     end
   end
+
+  describe "authenticate" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "with a valid email and password" do
+      auth_user = User.authenticate(user.email, 'password')
+      expect(auth_user).to be_a(User)
+    end
+
+    it "with an invalid password" do
+      auth_user = User.authenticate(user.email, 'invalid')
+      expect(auth_user).to be_nil
+    end
+  end
 end

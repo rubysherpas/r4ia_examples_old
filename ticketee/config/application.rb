@@ -22,5 +22,17 @@ module Ticketee
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.middleware.use Warden::Manager do |manager|
+      manager.default_strategies :password
+
+      manager.serialize_into_session do |user|
+        user.id
+      end
+
+      manager.serialize_from_session do |id|
+        User.find(id)
+      end
+    end
   end
 end
