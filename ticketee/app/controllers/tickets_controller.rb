@@ -28,6 +28,13 @@ class TicketsController < ApplicationController
     end
   end
 
+  def destroy
+    @ticket.destroy
+    flash[:success] = "Ticket has been deleted."
+
+    redirect_to @project
+  end
+
   private
     def ticket_params
       params.require(:ticket).permit(:title, :description)
