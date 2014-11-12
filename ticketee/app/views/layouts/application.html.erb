@@ -14,13 +14,27 @@
 </head>
 <body>
 
-<% flash.each do |key, message| %>
-  <div class='flash' id='<%= key %>'>
-  <%= message %>
-  </div>
-<% end %>
+  <div class='container'>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <%= link_to "Ticketee", root_path, class: 'navbar-brand' %>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class='<%= 'active' if current_page?('/') %>'>
+          <%= link_to "Home", root_path %>
+        </li>
+      </ul>
+    </nav>
 
-<%= yield %>
+    <% flash.each do |key, message| %>
+      <div class='alert alert-<%= key %>'>
+        <%= message %>
+      </div>
+    <% end %>
+
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
