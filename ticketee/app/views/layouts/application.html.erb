@@ -33,6 +33,9 @@
           <p class="navbar-text navbar-right">
             <% if signed_in? %>
               Signed in as <%= current_user.email %> &middot;
+              <% admins_only do %>
+                <%= link_to "Admin", admin_root_path %>
+              <% end %>
               <%= link_to "Sign out", sign_out_path, method: :delete %>
             <% end %>
           </p>
