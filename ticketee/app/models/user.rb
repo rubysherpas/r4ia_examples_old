@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
     user = find_by(email: email)
     return user if user && user.authenticate(password)
   end
+
+  def to_s
+    "#{email} (#{admin? ? "Admin" : "User"})"
+  end
 end

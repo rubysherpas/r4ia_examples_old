@@ -26,6 +26,7 @@ class Admin::UsersController < Admin::BaseController
       params.require(:user).permit(:name,
                                    :email,
                                    :password,
-                                   :password_confirmation)
+                                   :password_confirmation,
+                                   :admin)
     end
 end
