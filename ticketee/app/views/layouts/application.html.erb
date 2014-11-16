@@ -27,6 +27,9 @@
           <li class='<%= 'active' if current_page?('/users/sign_up') %>'>
             <%= link_to "Sign up", sign_up_path %>
           </li>
+          <li class='<%= 'active' if current_page?('/users/sign_in') %>'>
+            <%= link_to "Sign in", sign_in_path %>
+          </li>
         </ul>
       </div>
     </nav>
