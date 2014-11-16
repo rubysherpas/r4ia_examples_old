@@ -2,6 +2,7 @@ require 'rails_helper'
 
 feature 'Creating Projects' do
   before do
+    login_as(FactoryGirl.create(:admin_user))
     visit '/'
 
     click_link 'New Project'
