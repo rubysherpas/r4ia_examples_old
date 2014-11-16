@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 20141115005100) do
     t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
   end
 
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"
+  add_index "tickets", ["user_id"], name: "index_tickets_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

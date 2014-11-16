@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     env["warden"].authenticated?
   end
   helper_method :signed_in?
+
+  def require_sign_in!
+    unless current_user.present?
+      message = "You need to sign in or sign up before continuing."
+      flash[:warning] = message
+      redirect_to sign_in_url
+    end
+  end
 end
