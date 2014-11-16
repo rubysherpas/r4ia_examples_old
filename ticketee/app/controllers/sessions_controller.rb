@@ -9,4 +9,10 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    env["warden"].logout
+    flash[:notice] = "You have signed out."
+    redirect_to "/"
+  end
 end
