@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+  end
+  
   root 'projects#index'
   get "/users/sign_up", to: "users#new", as: "sign_up"
   post "/users/sign_up", to: "users#create"

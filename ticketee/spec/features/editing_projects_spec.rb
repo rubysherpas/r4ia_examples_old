@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Editing Projects" do
   before do
+    login_as(FactoryGirl.create(:admin_user))
     FactoryGirl.create(:project, name: "Sublime Text 3")
 
     visit "/"
