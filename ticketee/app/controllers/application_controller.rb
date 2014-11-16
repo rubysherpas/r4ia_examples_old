@@ -22,4 +22,13 @@ class ApplicationController < ActionController::Base
       redirect_to sign_in_url
     end
   end
+
+  def authorize_admin!
+   require_sign_in!
+
+   unless current_user.admin?
+     flash[:alert] = "You must be an admin to do that."
+     redirect_to root_path
+   end
+  end
 end
