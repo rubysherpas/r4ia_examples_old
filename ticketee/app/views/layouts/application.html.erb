@@ -24,9 +24,17 @@
           <li class='<%= 'active' if current_page?('/') %>'>
             <%= link_to "Home", root_path %>
           </li>
-          <li class='<%= 'active' if current_page?('/users/sign_up') %>'>
-            <%= link_to "Sign up", new_user_registration_path %>
-          </li>
+          <% if user_signed_in? %>
+            Signed in as <%= current_user.email %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <li class='<%= 'active' if current_page?('/users/sign_up') %>'>
+              <%= link_to "Sign up", new_user_registration_path %>
+            </li>
+            <li class='<%= 'active' if current_page?('/users/sign_in') %>'>
+              <%= link_to "Sign in", new_user_session_path %>
+            </li>
+          <% end %>
         </ul>
       </div>
     </nav>
