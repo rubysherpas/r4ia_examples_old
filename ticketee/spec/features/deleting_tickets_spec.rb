@@ -2,7 +2,10 @@ require "rails_helper"
 
 feature "Deleting tickets" do
   let!(:project) { FactoryGirl.create(:project) }
-  let!(:ticket) { FactoryGirl.create(:ticket, project: project) }
+  let(:user) { FactoryGirl.create(:user) }
+  let!(:ticket) do
+    FactoryGirl.create(:ticket, project: project, author: user)
+  end
 
   before do
     visit "/"

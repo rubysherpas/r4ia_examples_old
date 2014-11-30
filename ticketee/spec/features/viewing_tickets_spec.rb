@@ -2,18 +2,21 @@ require "rails_helper"
 
 feature "Viewing tickets" do
   before do
+    user = FactoryGirl.create(:user)
     sublime = FactoryGirl.create(:project, name: "Sublime Text 3")
 
     FactoryGirl.create(:ticket,
       project: sublime,
       title: "Make it shiny!",
-      description: "Gradients! Starbursts! Oh my!")
+      description: "Gradients! Starbursts! Oh my!",
+      author: user)
 
     ie = FactoryGirl.create(:project, name: "Internet Explorer")
     FactoryGirl.create(:ticket,
       project: ie,
       title: "Standards compliance",
-      description: "Isn't a joke.")
+      description: "Isn't a joke.",
+      author: user)
 
     visit "/"
   end
