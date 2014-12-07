@@ -37,6 +37,9 @@
         <% if user_signed_in? %>
           <div class="collapse navbar-collapse">
             <div class="navbar-text navbar-right">
+              <% admins_only do %>
+                <%= link_to "Admin", admin_root_path %>
+              <% end %>
               Signed in as <%= current_user.email %> &middot;
               <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
             </div>
