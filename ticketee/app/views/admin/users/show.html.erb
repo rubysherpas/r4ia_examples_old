@@ -4,5 +4,9 @@
   <ul class="actions">
     <li><%= link_to "Edit User", [:edit, :admin, @user],
       class: "edit" %></li>
+
+    <li><%= link_to "Delete User", [:admin, @user], method: :delete,
+        data: { confirm: "Are you sure you want to delete this user?"},
+        class: "delete" %></li>
   </ul>
 </div>
