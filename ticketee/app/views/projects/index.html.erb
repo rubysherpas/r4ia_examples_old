@@ -1,4 +1,9 @@
-<%= link_to "New Project", new_admin_project_path, class: "new" %>
+<% admins_only do %>
+  <ul class="actions">
+    <li><%= link_to "New Project", new_admin_project_path,
+      class: "new" %></li>
+  </ul>
+<% end %>
 
 <h2>Projects</h2>
 <ul>
