@@ -4,6 +4,7 @@ feature "Viewing tickets" do
   before do
     user = FactoryGirl.create(:user)
     sublime = FactoryGirl.create(:project, name: "Sublime Text 3")
+    assign_role!(user, :viewer, sublime)
 
     FactoryGirl.create(:ticket,
       project: sublime,
@@ -12,12 +13,14 @@ feature "Viewing tickets" do
       author: user)
 
     ie = FactoryGirl.create(:project, name: "Internet Explorer")
+    assign_role!(user, :viewer, ie)
     FactoryGirl.create(:ticket,
       project: ie,
       title: "Standards compliance",
       description: "Isn't a joke.",
       author: user)
 
+    login_as(user)
     visit "/"
   end
 
