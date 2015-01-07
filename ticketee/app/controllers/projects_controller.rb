@@ -15,6 +15,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def show
+    authorize @project, :show?
+  end
+
   private
 
   def set_project
