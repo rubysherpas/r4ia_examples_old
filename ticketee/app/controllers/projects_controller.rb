@@ -15,23 +15,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def destroy
-    @project.destroy
-
-    flash[:notice] = "Project has been destroyed."
-
-    redirect_to projects_path
-  end
-
   private
 
   def set_project
     @project = Project.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The project you were looking" +
-                    " for could not be found."
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = "The project you were looking" +
+                      " for could not be found."
 
-    redirect_to projects_path
+      redirect_to projects_path
   end
 
   def project_params
