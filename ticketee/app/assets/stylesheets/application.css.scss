@@ -56,3 +56,22 @@ a.delete {
   color: #959595;
   padding-left: 15px;
 }
+
+.roles {
+  @extend .table;
+  @extend .form-horizontal;
+
+  tr:first-child {
+    td, th {
+      border-top: 0px;
+    }
+  }
+
+  label {
+    @extend .control-label;
+  }
+
+  select {
+    @extend .form-control;
+  }
+}

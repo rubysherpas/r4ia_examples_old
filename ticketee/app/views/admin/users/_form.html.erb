@@ -2,6 +2,23 @@
   <%= f.input :email %>
   <%= f.input :password %>
 
+  <div class="page-header">
+    <h2>Roles</h2>
+  </div>
+
+  <table class="roles">
+    <% @projects.each do |project| %>
+      <tr>
+        <th><%= label_tag dom_id(project), project.name %></th>
+        <td>
+          <%= select_tag dom_id(project), options_for_select(roles,
+            @user.role_on(project)), name: "roles[#{project.id}]",
+            include_blank: true %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 
   <%= f.input :admin, label: "Is an admin?" %>
