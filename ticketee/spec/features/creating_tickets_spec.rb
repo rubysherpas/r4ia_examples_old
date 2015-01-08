@@ -5,7 +5,7 @@ feature "Creating Tickets" do
   before do
     login_as(user)
     project = FactoryGirl.create(:project, name: "Internet Explorer")
-    assign_role!(user, :viewer, project)
+    assign_role!(user, :editor, project)
 
     visit '/'
     click_link "Internet Explorer"
