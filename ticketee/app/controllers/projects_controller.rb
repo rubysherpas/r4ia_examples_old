@@ -5,12 +5,17 @@ class ProjectsController < ApplicationController
     @projects = policy_scope(Project)
   end
 
+  def edit
+    authorize @project, :update?
+  end
+
   def update
+    authorize @project, :update?
     if @project.update(project_params)
       flash[:notice] = "Project has been updated."
       redirect_to @project
     else
-      flash[:alert] = "Project has not been updated."
+      flash.now[:alert] = "Project has not been updated."
       render "edit"
     end
   end

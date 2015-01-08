@@ -6,7 +6,7 @@ feature "Editing Projects" do
 
   before do
     login_as(user)
-    assign_role!(user, :viewer, project)
+    assign_role!(user, :manager, project)
 
     visit "/"
     click_link "Sublime Text 3"
