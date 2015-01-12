@@ -16,6 +16,7 @@
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :asset, as: :file, label: "File" %>
+    <%= f.input :asset_cache, as: :hidden %>
 
     <%= f.button :submit, class: 'btn-primary' %>
   <% end %>
