@@ -14,4 +14,14 @@
     Created by <%= @ticket.author.email %>
   </div>
   <%= simple_format(@ticket.description) %>
+
+  <% if @ticket.asset.present? %>
+    <h4>Attached File</h4>
+      <div class="asset">
+        <p>
+          <%= link_to File.basename(@ticket.asset.url), @ticket.asset.url %>
+          (<%= number_to_human_size(@ticket.asset.size) %>)
+        </p>
+      </div>
+  <% end %>
 </div>

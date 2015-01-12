@@ -11,25 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150107074128) do
+ActiveRecord::Schema.define(version: 20150112212604) do
 
-  create_table "permissions", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "thing_id"
-    t.string   "thing_type"
-    t.string   "action"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  create_table "roles", force: true do |t|
+  create_table "roles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "role"
     t.integer  "project_id"
@@ -40,18 +31,19 @@ ActiveRecord::Schema.define(version: 20150107074128) do
   add_index "roles", ["project_id"], name: "index_roles_on_project_id"
   add_index "roles", ["user_id"], name: "index_roles_on_user_id"
 
-  create_table "tickets", force: true do |t|
+  create_table "tickets", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "project_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "author_id"
+    t.string   "asset"
   end
 
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
