@@ -20,7 +20,7 @@
     <div class="assets">
       <% @ticket.assets.each do |asset| %>
         <p>
-          <%= link_to File.basename(asset.asset.url), asset.asset.url %>
+          <%= link_to File.basename(asset.asset.url), asset_path(asset) %>
           (<%= number_to_human_size(asset.asset.size) %>)
         </p>
       <% end %>
