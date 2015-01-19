@@ -15,8 +15,11 @@
 
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :asset, as: :file, label: "File" %>
-    <%= f.input :asset_cache, as: :hidden %>
+    <h3>Supporting Files</h3>
+    <%= f.simple_fields_for :assets do |ff| %>
+      <%= ff.input :asset, as: :file, label: "File ##{ff.index + 1}" %>
+      <%= ff.input :asset_cache, as: :hidden %>
+    <% end %>
 
     <%= f.button :submit, class: 'btn-primary' %>
   <% end %>

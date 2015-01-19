@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112212604) do
+ActiveRecord::Schema.define(version: 20150119070403) do
+
+  create_table "assets", force: :cascade do |t|
+    t.string   "asset"
+    t.integer  "ticket_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "assets", ["ticket_id"], name: "index_assets_on_ticket_id"
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -38,7 +47,6 @@ ActiveRecord::Schema.define(version: 20150112212604) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "author_id"
-    t.string   "asset"
   end
 
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"

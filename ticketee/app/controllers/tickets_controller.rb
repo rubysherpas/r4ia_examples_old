@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = @project.tickets.build
+    3.times { @ticket.assets.build }
     authorize @ticket, :create?
   end
 
@@ -51,7 +52,8 @@ class TicketsController < ApplicationController
 
   private
     def ticket_params
-      params.require(:ticket).permit(:title, :description, :asset, :asset_cache)
+      params.require(:ticket).permit(:title, :description,
+        assets_attributes: [:asset, :asset_cache])
     end
 
     def set_project

@@ -15,13 +15,15 @@
   </div>
   <%= simple_format(@ticket.description) %>
 
-  <% if @ticket.asset.present? %>
-    <h4>Attached File</h4>
-      <div class="asset">
+  <% if @ticket.assets.any? %>
+    <h4>Attached Files</h4>
+    <div class="assets">
+      <% @ticket.assets.each do |asset| %>
         <p>
-          <%= link_to File.basename(@ticket.asset.url), @ticket.asset.url %>
-          (<%= number_to_human_size(@ticket.asset.size) %>)
+          <%= link_to File.basename(asset.asset.url), asset.asset.url %>
+          (<%= number_to_human_size(asset.asset.size) %>)
         </p>
-      </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
