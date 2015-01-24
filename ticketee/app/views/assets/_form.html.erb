@@ -1,0 +1,4 @@
+<%= f.simple_fields_for :assets, child_index: index do |ff| %>
+  <%= ff.input :asset, as: :file, label: "File ##{index += 1}" %>
+  <%= ff.input :asset_cache, as: :hidden %>
+<% end %>

@@ -15,11 +15,14 @@
 
     <%= f.input :title %>
     <%= f.input :description %>
-    <h3>Supporting Files</h3>
-    <%= f.simple_fields_for :assets do |ff| %>
-      <%= ff.input :asset, as: :file, label: "File ##{ff.index + 1}" %>
-      <%= ff.input :asset_cache, as: :hidden %>
-    <% end %>
+    <div id="assets">
+      <h3>Supporting Files</h3>
+      <%= render partial: "assets/form", locals: { f: f, index: 0 } %>
+    </div>
+    <p>
+      <%= link_to "Add another file", new_asset_path,
+      remote: true, id: "add_file" %>
+    </p>
 
     <%= f.button :submit, class: 'btn-primary' %>
   <% end %>
